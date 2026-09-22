@@ -8,7 +8,8 @@
     "entry": "README.md",
     "plan": "docs/PROJECT_PLAN.md",
     "review_policy": "AGENTS.md",
-    "authorized_now": "ARB-002 delivered R1 corrections plus a mock-only minimal loop for review; no paid calls, no credentials, no real capture or audio, no live broadcast."
+    "authorized_now": "ARB-002 delivered R1 corrections plus a mock-only minimal loop for review; no paid calls, no credentials, no real capture or audio, no live broadcast.",
+    "review_r1": "reviews/ARB-001_GPT_REVIEW_R1.md"
   },
   "queue": [
     {
@@ -24,7 +25,7 @@
       "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
       "branch": "claude/hopeful-archimedes-bf57bo",
       "branch_note": "Prompt asked for claude/arb-001-detailed-plan; this session was assigned claude/hopeful-archimedes-bf57bo and did not push to a different branch without permission.",
-      "report": "https://github.com/firekou/Auto_Reply_Bot/blob/7a791e28ace60610acaf61e15b3a8e46588e19ec/reports/ARB-001_EXECUTOR_REPORT.md",
+      "report": "reports/ARB-001_EXECUTOR_REPORT.md",
       "pull_request": "https://github.com/firekou/Auto_Reply_Bot/pull/1",
       "changed_paths": [
         "docs/IMPLEMENTATION_DESIGN.md",
@@ -65,7 +66,9 @@
       ],
       "next_checkpoint": "ARB-002 mock implementation with R1 conditions; PR #1 remains draft",
       "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned",
-      "review": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/reviews/ARB-001_GPT_REVIEW_R1.md"
+      "review": "reviews/ARB-001_GPT_REVIEW_R1.md",
+      "report_url": "https://github.com/firekou/Auto_Reply_Bot/blob/7a791e28ace60610acaf61e15b3a8e46588e19ec/reports/ARB-001_EXECUTOR_REPORT.md",
+      "review_url": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/reviews/ARB-001_GPT_REVIEW_R1.md"
     },
     {
       "work_id": "ARB-002",
@@ -126,7 +129,7 @@
       "blocking_findings": [],
       "next_checkpoint": "GPT independent review of the R1 corrections and the C1 minimal loop; PR #1 stays draft",
       "invalidates_when": "Scope expands to paid services, real capture, real audio or live broadcast; or content head changes",
-      "prompt": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md",
+      "prompt": "prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md",
       "review_head": "6079e14b35a162ae70d09ea7a84b4930d84eb68f",
       "design_fix_commit": "81296793ecf7aeb98347e75c0e7730eb3d1f1110",
       "implementation_commit": "7647009701a3107db9ea63fb0afaf39ec359f4f2",
@@ -145,7 +148,8 @@
       "review_conditions_open": [
         "F6 (P2 half: device enumeration, real playback and force stop, OBS capture of the player)"
       ],
-      "checkpoint": "C1 delivered; C2 replay scale delivered at 30 scene minutes; C3 remaining failure cases still open"
+      "checkpoint": "C1 delivered; C2 replay scale delivered at 30 scene minutes; C3 remaining failure cases still open",
+      "prompt_url": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md"
     },
     {
       "work_id": "ARB-003",
