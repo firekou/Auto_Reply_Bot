@@ -5,7 +5,7 @@
 | work_id | ARB-001 |
 | role | Claude executor planner |
 | base_sha | ac94f768d246fe7222fdc94a6d08961e6bfe2fc2 |
-| content_head | PENDING_EVIDENCE_COMMIT |
+| content_head | be87c7724a956f2e2033242bd06f35ee349ebef5 |
 | reviewed_head | null |
 | reviewer_only_head | null |
 | scope | Detailed design and bounded PoC plan |
@@ -14,7 +14,7 @@
 | next_checkpoint | GPT 獨立覆核本 PR 的設計、查證來源與範圍邊界 |
 | invalidates_when | 任務範圍改變、content_head 改變、或任一官方來源的結論被推翻 |
 
-`content_head` 在本報告寫入時尚未產生，依 prompts/CLAUDE_PLANNING_PROMPT.md 的規定不在同一 commit 內自引用。內容 commit 推送後，由後續證據 commit 填入該 SHA。
+`content_head` 指內容 commit `be87c7724a956f2e2033242bd06f35ee349ebef5`，由本證據 commit 填入。內容 commit 本身沒有自引用自己的 SHA，符合 prompts/CLAUDE_PLANNING_PROMPT.md 的規定。本證據 commit 只更動 content_head 欄位與 PR 位置，不更動設計內容。
 
 ## 1. 變更路徑
 

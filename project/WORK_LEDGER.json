@@ -19,7 +19,7 @@
       "role": "Claude executor planner",
       "base_sha": "ac94f768d246fe7222fdc94a6d08961e6bfe2fc2",
       "base_sha_instruction": "Resolved from origin/main at task start.",
-      "content_head": null,
+      "content_head": "be87c7724a956f2e2033242bd06f35ee349ebef5",
       "content_head_instruction": "Filled by the follow-up evidence commit; the content commit does not reference its own SHA.",
       "reviewed_head": null,
       "reviewer_only_head": null,
@@ -38,10 +38,22 @@
         "README.md"
       ],
       "commands_and_exit_codes": [
-        { "command": "git fetch origin main", "exit_code": 0 },
-        { "command": "git rev-parse origin/main", "exit_code": 0 },
-        { "command": "git status --porcelain", "exit_code": 0 },
-        { "command": "ls docs reports", "exit_code": 0 }
+        {
+          "command": "git fetch origin main",
+          "exit_code": 0
+        },
+        {
+          "command": "git rev-parse origin/main",
+          "exit_code": 0
+        },
+        {
+          "command": "git status --porcelain",
+          "exit_code": 0
+        },
+        {
+          "command": "ls docs reports",
+          "exit_code": 0
+        }
       ],
       "decision": null,
       "blocking_findings": [],
