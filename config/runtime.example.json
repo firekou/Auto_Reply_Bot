@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1-proposal",
+  "status": "DESIGN_ONLY_NOT_EXECUTABLE",
+  "mode": "mock",
+  "host": {
+    "os": "windows11_candidate",
+    "bind": "127.0.0.1"
+  },
+  "browser": {
+    "url": null,
+    "profile": "dedicated",
+    "game_region": null,
+    "chat_selector": null
+  },
+  "persona": {
+    "id": "host_01",
+    "version": "0.1",
+    "language": "zh-TW",
+    "personality": [
+      "親切",
+      "機靈",
+      "輕微幽默"
+    ],
+    "voice_id": null
+  },
+  "capture": {
+    "frame_interval_ms": 2000,
+    "chat_interval_ms": 1000,
+    "max_image_long_edge": 1280,
+    "max_images_per_request": 2
+  },
+  "director": {
+    "min_model_interval_ms": 5000,
+    "max_inflight_generation": 1,
+    "max_pending_utterances": 1,
+    "game_event_ttl_ms": 12000,
+    "chat_ttl_ms": 30000,
+    "recent_spoken_count": 10,
+    "max_chat_messages": 20,
+    "max_chat_characters": 2000,
+    "max_reference_characters": 4000
+  },
+  "model": {
+    "provider": "mock",
+    "model_id": null,
+    "timeout_ms": 8000,
+    "max_output_tokens": 180,
+    "max_calls_per_minute": 12,
+    "retries_per_event": 0
+  },
+  "tts": {
+    "provider": "mock",
+    "voice_id": null,
+    "timeout_ms": 5000,
+    "retries_per_event": 0
+  },
+  "speech": {
+    "min_sentences": 1,
+    "max_sentences": 3,
+    "max_characters": 80,
+    "target_min_characters": 20
+  },
+  "audio": {
+    "device_id": null,
+    "exclusive_player": true,
+    "emergency_stop_target_ms": 1000
+  },
+  "budget": {
+    "billing_mode": "unconfigured",
+    "hourly_usd_limit": null,
+    "session_usd_limit": null,
+    "price_table_version": null,
+    "paid_mode_requires_authorized_limits": true
+  },
+  "recovery": {
+    "consecutive_failures_before_pause": 3,
+    "cooldown_ms": 30000
+  },
+  "retention": {
+    "persist_frames": false,
+    "audio_hours": 24,
+    "text_log_days": 7
+  },
+  "broadcast": {
+    "tool": "obs_candidate",
+    "auto_start": false
+  },
+  "secrets": {
+    "source": "local_environment_only"
+  }
+}

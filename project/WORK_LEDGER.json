@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "repository": "firekou/Auto_Reply_Bot",
+  "updated_at": "2026-09-22",
+  "state": "PLANNING_READY_FOR_CLAUDE",
+  "automation": "NOT_ENABLED",
+  "authority": {
+    "entry": "README.md",
+    "plan": "docs/PROJECT_PLAN.md",
+    "review_policy": "AGENTS.md",
+    "authorized_now": "Upload planning documents; next Claude batch is detailed planning only"
+  },
+  "queue": [
+    {
+      "work_id": "ARB-001",
+      "role": "Claude executor planner",
+      "base_sha": null,
+      "base_sha_instruction": "Resolve main SHA at task start; original repository was empty.",
+      "content_head": null,
+      "reviewed_head": null,
+      "reviewer_only_head": null,
+      "scope": "Detailed design and bounded PoC plan",
+      "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
+      "changed_paths": [],
+      "commands_and_exit_codes": [],
+      "decision": null,
+      "blocking_findings": [],
+      "next_checkpoint": "Draft PR with design, backlog, PoC runbook and executor report; GPT independently reviews",
+      "invalidates_when": "Task scope or content head changes"
+    }
+  ],
+  "next_role": "Claude executor planner",
+  "runtime_validation": {
+    "capture": "NOT_TESTED",
+    "chat": "NOT_TESTED",
+    "model": "NOT_TESTED",
+    "tts": "NOT_TESTED",
+    "local_audio": "NOT_TESTED",
+    "obs_recording": "NOT_TESTED",
+    "live_reception": "NOT_TESTED"
+  },
+  "future_milestones": [
+    "P1 offline replay",
+    "P2 real local loop",
+    "P3 recording and controlled live trial",
+    "P4 two-hour stability"
+  ],
+  "notes": [
+    "Initial documentation author output; no independent approval claimed.",
+    "No automatic Claude trigger configured.",
+    "Planning commit is the commit containing this file; do not invent a self-referential SHA."
+  ]
+}
