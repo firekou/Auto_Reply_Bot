@@ -28,7 +28,7 @@
       "branch": "claude/hopeful-archimedes-bf57bo",
       "branch_note": "Prompt asked for claude/arb-001-detailed-plan; this session was assigned claude/hopeful-archimedes-bf57bo and did not push to a different branch without permission.",
       "report": "reports/ARB-001_EXECUTOR_REPORT.md",
-      "pull_request": null,
+      "pull_request": "https://github.com/firekou/Auto_Reply_Bot/pull/1",
       "changed_paths": [
         "docs/IMPLEMENTATION_DESIGN.md",
         "docs/IMPLEMENTATION_BACKLOG.md",
@@ -64,7 +64,7 @@
         "Whether Azure AI Speech is authorized and what the hourly/session USD limits are",
         "Whether the persona and voice are user-selected or the candidate default stands"
       ],
-      "next_checkpoint": "GPT independent review of design, sourcing and scope boundaries",
+      "next_checkpoint": "GPT independent review of PR #1 (design, sourcing and scope boundaries)",
       "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned"
     },
     {
