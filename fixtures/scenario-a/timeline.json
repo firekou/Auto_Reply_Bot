@@ -1,0 +1,56 @@
+[
+  {
+    "kind": "scene_change",
+    "at": 300000,
+    "round": 2
+  },
+  {
+    "kind": "scene_change",
+    "at": 900000,
+    "round": 3
+  },
+  {
+    "kind": "capture_blackout",
+    "at": 420000,
+    "untilAt": 440000
+  },
+  {
+    "kind": "capture_stall",
+    "at": 600000,
+    "untilAt": 620000
+  },
+  {
+    "kind": "chat_outage",
+    "at": 700000,
+    "untilAt": 790000
+  },
+  {
+    "kind": "model_fault",
+    "at": 150000,
+    "fault": "timeout"
+  },
+  {
+    "kind": "model_fault",
+    "at": 250000,
+    "fault": "rate_limit"
+  },
+  {
+    "kind": "model_fault",
+    "at": 480000,
+    "fault": "malformed"
+  },
+  {
+    "kind": "model_fault",
+    "at": 540000,
+    "fault": "overlong"
+  },
+  {
+    "kind": "model_fault",
+    "at": 1500000,
+    "fault": "spend_limit"
+  },
+  {
+    "kind": "tts_fault",
+    "at": 360000
+  }
+]
