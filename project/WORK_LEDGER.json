@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "firekou/Auto_Reply_Bot",
   "updated_at": "2026-09-22",
-  "state": "ARB-001_READY_FOR_GPT_REVIEW",
+  "state": "ARB-001_APPROVED_WITH_CONDITIONS",
   "automation": "NOT_ENABLED",
   "authority": {
     "entry": "README.md",
@@ -11,7 +11,7 @@
     "backlog": "docs/IMPLEMENTATION_BACKLOG.md",
     "runbook": "docs/POC_RUNBOOK.md",
     "review_policy": "AGENTS.md",
-    "authorized_now": "ARB-001 detailed planning delivered for review; no implementation, no paid calls, no live broadcast authorized"
+    "authorized_now": "Review recorded; next scoped checkpoint is mock-only ARB-002 with R1 corrections. No paid calls or broadcast."
   },
   "queue": [
     {
@@ -21,7 +21,7 @@
       "base_sha_instruction": "Resolved from origin/main at task start.",
       "content_head": "be87c7724a956f2e2033242bd06f35ee349ebef5",
       "content_head_instruction": "Filled by the follow-up evidence commit; the content commit does not reference its own SHA.",
-      "reviewed_head": null,
+      "reviewed_head": "7a791e28ace60610acaf61e15b3a8e46588e19ec",
       "reviewer_only_head": null,
       "scope": "Detailed design and bounded PoC plan",
       "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
@@ -55,8 +55,10 @@
           "exit_code": 0
         }
       ],
-      "decision": null,
-      "blocking_findings": [],
+      "decision": "APPROVED_WITH_CONDITIONS",
+      "blocking_findings": [
+        "F1-F5 must close in next mock checkpoint; F4/F6 before real mode"
+      ],
       "open_questions": [
         "Host OS and version (Windows 11 vs macOS) decides the whole audio path",
         "Game page URL and rendering type (DOM, Canvas, WebGL, cross-origin iframe)",
@@ -64,8 +66,9 @@
         "Whether Azure AI Speech is authorized and what the hourly/session USD limits are",
         "Whether the persona and voice are user-selected or the candidate default stands"
       ],
-      "next_checkpoint": "GPT independent review of PR #1 (design, sourcing and scope boundaries)",
-      "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned"
+      "next_checkpoint": "ARB-002 mock implementation with R1 conditions; PR #1 remains draft",
+      "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned",
+      "review": "reviews/ARB-001_GPT_REVIEW_R1.md"
     },
     {
       "work_id": "ARB-002",
@@ -74,17 +77,20 @@
       "content_head": null,
       "reviewed_head": null,
       "reviewer_only_head": null,
-      "scope": "P1 offline replay only: T-101 through T-116 in docs/IMPLEMENTATION_BACKLOG.md",
-      "state": "BLOCKED_ON_ARB-001_REVIEW",
+      "scope": "Small mock end-to-end checkpoint plus R1 F1-F5 corrections; staged P1 completion",
+      "state": "READY_WITH_REVIEW_CONDITIONS",
       "changed_paths": [],
       "commands_and_exit_codes": [],
       "decision": null,
-      "blocking_findings": [],
-      "next_checkpoint": "Do not start before ARB-001 review decision is recorded",
-      "invalidates_when": "ARB-001 review returns NEEDS_INFORMATION or BLOCKED"
+      "blocking_findings": [
+        "R1 conditions required before accepting implementation"
+      ],
+      "next_checkpoint": "Runnable mock loop, targeted tests and truthful replay report",
+      "invalidates_when": "Scope expands to paid services or live runtime, or new substantive content changes review assumptions",
+      "prompt": "prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md"
     }
   ],
-  "next_role": "GPT reviewer",
+  "next_role": "Claude executor implementer",
   "runtime_validation": {
     "capture": "NOT_TESTED",
     "chat": "NOT_TESTED",
@@ -104,6 +110,7 @@
     "ARB-001 produced design documents only. No code was written, built or executed.",
     "All runbook commands are marked as planned; no exit codes, recordings or pass rates were produced.",
     "Executor report claims no approval; decision stays null until GPT reviews independently.",
-    "No automatic Claude or GPT trigger configured; automation stays NOT_ENABLED."
+    "No automatic Claude or GPT trigger configured; automation stays NOT_ENABLED.",
+    "Independent R1 reviewed_head 7a791e28ace60610acaf61e15b3a8e46588e19ec; no real validation or merge performed."
   ]
 }
