@@ -2,34 +2,92 @@
   "schema_version": 1,
   "repository": "firekou/Auto_Reply_Bot",
   "updated_at": "2026-09-22",
-  "state": "PLANNING_READY_FOR_CLAUDE",
+  "state": "ARB-001_APPROVED_WITH_CONDITIONS",
   "automation": "NOT_ENABLED",
   "authority": {
     "entry": "README.md",
     "plan": "docs/PROJECT_PLAN.md",
     "review_policy": "AGENTS.md",
-    "authorized_now": "Upload planning documents; next Claude batch is detailed planning only"
+    "authorized_now": "ARB-001 review recorded; next scoped mock checkpoint and required corrections are specified in linked ARB-002 prompt; no paid calls or live broadcast."
   },
   "queue": [
     {
       "work_id": "ARB-001",
       "role": "Claude executor planner",
+      "base_sha": "ac94f768d246fe7222fdc94a6d08961e6bfe2fc2",
+      "base_sha_instruction": "Resolved from origin/main at task start.",
+      "content_head": "be87c7724a956f2e2033242bd06f35ee349ebef5",
+      "content_head_instruction": "Filled by the follow-up evidence commit; the content commit does not reference its own SHA.",
+      "reviewed_head": "7a791e28ace60610acaf61e15b3a8e46588e19ec",
+      "reviewer_only_head": "6079e14b35a162ae70d09ea7a84b4930d84eb68f",
+      "scope": "Detailed design and bounded PoC plan",
+      "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
+      "branch": "claude/hopeful-archimedes-bf57bo",
+      "branch_note": "Prompt asked for claude/arb-001-detailed-plan; this session was assigned claude/hopeful-archimedes-bf57bo and did not push to a different branch without permission.",
+      "report": "https://github.com/firekou/Auto_Reply_Bot/blob/7a791e28ace60610acaf61e15b3a8e46588e19ec/reports/ARB-001_EXECUTOR_REPORT.md",
+      "pull_request": "https://github.com/firekou/Auto_Reply_Bot/pull/1",
+      "changed_paths": [
+        "docs/IMPLEMENTATION_DESIGN.md",
+        "docs/IMPLEMENTATION_BACKLOG.md",
+        "docs/POC_RUNBOOK.md",
+        "reports/ARB-001_EXECUTOR_REPORT.md",
+        "project/WORK_LEDGER.json",
+        "README.md"
+      ],
+      "commands_and_exit_codes": [
+        {
+          "command": "git fetch origin main",
+          "exit_code": 0
+        },
+        {
+          "command": "git rev-parse origin/main",
+          "exit_code": 0
+        },
+        {
+          "command": "git status --porcelain",
+          "exit_code": 0
+        },
+        {
+          "command": "ls docs reports",
+          "exit_code": 0
+        }
+      ],
+      "decision": "APPROVED_WITH_CONDITIONS",
+      "blocking_findings": [
+        "F1-F5 must close in next mock checkpoint; F4/F6 before real mode"
+      ],
+      "open_questions": [
+        "Host OS and version (Windows 11 vs macOS) decides the whole audio path",
+        "Game page URL and rendering type (DOM, Canvas, WebGL, cross-origin iframe)",
+        "Chat platform and whether an official read interface is permitted",
+        "Whether Azure AI Speech is authorized and what the hourly/session USD limits are",
+        "Whether the persona and voice are user-selected or the candidate default stands"
+      ],
+      "next_checkpoint": "ARB-002 mock implementation with R1 conditions; PR #1 remains draft",
+      "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned",
+      "review": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/reviews/ARB-001_GPT_REVIEW_R1.md"
+    },
+    {
+      "work_id": "ARB-002",
+      "role": "Claude executor implementer",
       "base_sha": null,
-      "base_sha_instruction": "Resolve main SHA at task start; original repository was empty.",
       "content_head": null,
       "reviewed_head": null,
       "reviewer_only_head": null,
-      "scope": "Detailed design and bounded PoC plan",
-      "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
+      "scope": "Small mock end-to-end checkpoint plus R1 F1-F5 corrections; staged P1 completion",
+      "state": "READY_WITH_REVIEW_CONDITIONS",
       "changed_paths": [],
       "commands_and_exit_codes": [],
       "decision": null,
-      "blocking_findings": [],
-      "next_checkpoint": "Draft PR with design, backlog, PoC runbook and executor report; GPT independently reviews",
-      "invalidates_when": "Task scope or content head changes"
+      "blocking_findings": [
+        "R1 conditions required before accepting implementation"
+      ],
+      "next_checkpoint": "Runnable mock loop, targeted tests and truthful replay report",
+      "invalidates_when": "Scope expands to paid services or live runtime, or new substantive content changes review assumptions",
+      "prompt": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md"
     }
   ],
-  "next_role": "Claude executor planner",
+  "next_role": "Claude executor implementer",
   "runtime_validation": {
     "capture": "NOT_TESTED",
     "chat": "NOT_TESTED",
@@ -46,8 +104,8 @@
     "P4 two-hour stability"
   ],
   "notes": [
-    "Initial documentation author output; no independent approval claimed.",
-    "No automatic Claude trigger configured.",
-    "Planning commit is the commit containing this file; do not invent a self-referential SHA."
+    "PR #1 remains draft; implementation design remains on its branch.",
+    "R1 reviewer artifacts at 6079e14b35a162ae70d09ea7a84b4930d84eb68f. Follow linked prompt for next checkpoint.",
+    "All real runtime evidence remains NOT_TESTED; automation remains NOT_ENABLED."
   ]
 }
