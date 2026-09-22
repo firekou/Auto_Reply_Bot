@@ -1,0 +1,10 @@
+{
+  "name": "scenario-a",
+  "seed": 20260922,
+  "startAt": 0,
+  "durationMs": 1800000,
+  "frameIntervalMs": 2000,
+  "frameWidth": 960,
+  "frameHeight": 540,
+  "chatCount": 138
+}

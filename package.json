@@ -1,0 +1,19 @@
+{
+  "name": "auto-reply-bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive host runtime for Auto Reply Bot. Mock-only at this stage.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test 'dist/tests/**/*.test.js'",
+    "arb": "node dist/src/cli/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
