@@ -8,7 +8,7 @@
 | review_head | 6079e14b35a162ae70d09ea7a84b4930d84eb68f（R1 覆核與 ARB-002 prompt） |
 | design_fix_commit | 81296793ecf7aeb98347e75c0e7730eb3d1f1110 |
 | implementation_commit | 7647009701a3107db9ea63fb0afaf39ec359f4f2 |
-| content_head | PENDING_EVIDENCE_COMMIT |
+| content_head | 5051b9acf687f782fdc8c83de726028f36713849 |
 | reviewed_head | null |
 | reviewer_only_head | null |
 | scope | R1 F1 至 F5 設計修正（F6 的 P1 部分），加上可重播的最小 mock 循環與關鍵測試 |
@@ -17,7 +17,7 @@
 | next_checkpoint | GPT 覆核 R1 條件是否閉合，以及 C1 是否可接受 |
 | invalidates_when | 範圍擴及真實供應商、實機或直播；或 content_head 改變 |
 
-`content_head` 由後續證據 commit 填入，內容 commit 不自引用自己的 SHA。ARB-001 的原始報告 `reports/ARB-001_EXECUTOR_REPORT.md` 未修改，本報告是本輪的獨立回應。
+`content_head` 指內容 commit `5051b9acf687f782fdc8c83de726028f36713849`，由本證據 commit 填入；內容 commit 不自引用自己的 SHA。ARB-001 的原始報告 `reports/ARB-001_EXECUTOR_REPORT.md` 未修改，本報告是本輪的獨立回應。
 
 ## 1. 變更路徑
 

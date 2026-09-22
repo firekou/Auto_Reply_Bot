@@ -71,7 +71,7 @@
       "work_id": "ARB-002",
       "role": "Claude executor implementer",
       "base_sha": "7a791e28ace60610acaf61e15b3a8e46588e19ec",
-      "content_head": null,
+      "content_head": "5051b9acf687f782fdc8c83de726028f36713849",
       "reviewed_head": null,
       "reviewer_only_head": null,
       "scope": "Small mock end-to-end checkpoint plus R1 F1-F5 corrections; staged P1 completion",
