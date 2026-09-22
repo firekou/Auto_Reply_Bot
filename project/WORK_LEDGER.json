@@ -2,34 +2,77 @@
   "schema_version": 1,
   "repository": "firekou/Auto_Reply_Bot",
   "updated_at": "2026-09-22",
-  "state": "PLANNING_READY_FOR_CLAUDE",
+  "state": "ARB-001_READY_FOR_GPT_REVIEW",
   "automation": "NOT_ENABLED",
   "authority": {
     "entry": "README.md",
     "plan": "docs/PROJECT_PLAN.md",
+    "design": "docs/IMPLEMENTATION_DESIGN.md",
+    "backlog": "docs/IMPLEMENTATION_BACKLOG.md",
+    "runbook": "docs/POC_RUNBOOK.md",
     "review_policy": "AGENTS.md",
-    "authorized_now": "Upload planning documents; next Claude batch is detailed planning only"
+    "authorized_now": "ARB-001 detailed planning delivered for review; no implementation, no paid calls, no live broadcast authorized"
   },
   "queue": [
     {
       "work_id": "ARB-001",
       "role": "Claude executor planner",
-      "base_sha": null,
-      "base_sha_instruction": "Resolve main SHA at task start; original repository was empty.",
+      "base_sha": "ac94f768d246fe7222fdc94a6d08961e6bfe2fc2",
+      "base_sha_instruction": "Resolved from origin/main at task start.",
       "content_head": null,
+      "content_head_instruction": "Filled by the follow-up evidence commit; the content commit does not reference its own SHA.",
       "reviewed_head": null,
       "reviewer_only_head": null,
       "scope": "Detailed design and bounded PoC plan",
       "prompt": "prompts/CLAUDE_PLANNING_PROMPT.md",
+      "branch": "claude/hopeful-archimedes-bf57bo",
+      "branch_note": "Prompt asked for claude/arb-001-detailed-plan; this session was assigned claude/hopeful-archimedes-bf57bo and did not push to a different branch without permission.",
+      "report": "reports/ARB-001_EXECUTOR_REPORT.md",
+      "pull_request": null,
+      "changed_paths": [
+        "docs/IMPLEMENTATION_DESIGN.md",
+        "docs/IMPLEMENTATION_BACKLOG.md",
+        "docs/POC_RUNBOOK.md",
+        "reports/ARB-001_EXECUTOR_REPORT.md",
+        "project/WORK_LEDGER.json",
+        "README.md"
+      ],
+      "commands_and_exit_codes": [
+        { "command": "git fetch origin main", "exit_code": 0 },
+        { "command": "git rev-parse origin/main", "exit_code": 0 },
+        { "command": "git status --porcelain", "exit_code": 0 },
+        { "command": "ls docs reports", "exit_code": 0 }
+      ],
+      "decision": null,
+      "blocking_findings": [],
+      "open_questions": [
+        "Host OS and version (Windows 11 vs macOS) decides the whole audio path",
+        "Game page URL and rendering type (DOM, Canvas, WebGL, cross-origin iframe)",
+        "Chat platform and whether an official read interface is permitted",
+        "Whether Azure AI Speech is authorized and what the hourly/session USD limits are",
+        "Whether the persona and voice are user-selected or the candidate default stands"
+      ],
+      "next_checkpoint": "GPT independent review of design, sourcing and scope boundaries",
+      "invalidates_when": "Task scope changes, content head changes, or any cited source conclusion is overturned"
+    },
+    {
+      "work_id": "ARB-002",
+      "role": "Claude executor implementer",
+      "base_sha": null,
+      "content_head": null,
+      "reviewed_head": null,
+      "reviewer_only_head": null,
+      "scope": "P1 offline replay only: T-101 through T-116 in docs/IMPLEMENTATION_BACKLOG.md",
+      "state": "BLOCKED_ON_ARB-001_REVIEW",
       "changed_paths": [],
       "commands_and_exit_codes": [],
       "decision": null,
       "blocking_findings": [],
-      "next_checkpoint": "Draft PR with design, backlog, PoC runbook and executor report; GPT independently reviews",
-      "invalidates_when": "Task scope or content head changes"
+      "next_checkpoint": "Do not start before ARB-001 review decision is recorded",
+      "invalidates_when": "ARB-001 review returns NEEDS_INFORMATION or BLOCKED"
     }
   ],
-  "next_role": "Claude executor planner",
+  "next_role": "GPT reviewer",
   "runtime_validation": {
     "capture": "NOT_TESTED",
     "chat": "NOT_TESTED",
@@ -46,8 +89,9 @@
     "P4 two-hour stability"
   ],
   "notes": [
-    "Initial documentation author output; no independent approval claimed.",
-    "No automatic Claude trigger configured.",
-    "Planning commit is the commit containing this file; do not invent a self-referential SHA."
+    "ARB-001 produced design documents only. No code was written, built or executed.",
+    "All runbook commands are marked as planned; no exit codes, recordings or pass rates were produced.",
+    "Executor report claims no approval; decision stays null until GPT reviews independently.",
+    "No automatic Claude or GPT trigger configured; automation stays NOT_ENABLED."
   ]
 }
