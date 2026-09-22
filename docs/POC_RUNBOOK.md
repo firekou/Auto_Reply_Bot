@@ -66,6 +66,12 @@ fixture 放在 `fixtures/<scenario>/`，全部由 `tools/make-fixtures.ts` 產�
 
 前置：T-101 至 T-114 完成。
 
+### 3.0 場景時間與實際時間
+
+回播以虛擬時鐘推進，因此「30 分鐘」指的是**場景時間**，不是實際執行時間。報告必須同時列出兩者，例如「場景時間 30 分 00 秒，實際 wall time 4.1 秒」。跑完 30 分鐘場景時間**不能**宣稱已做過 30 分鐘實時穩定度測試；實時穩定度是 P4 的項目。
+
+控制指令透過 stdin 控制通道送入（IMPLEMENTATION_DESIGN 1.1.1），指令為 `pause`、`resume`、`stop`、`estop`。P1 沒有常駐服務，也沒有本機 IPC。
+
 預定命令：
 
 ```
@@ -83,13 +89,18 @@ fixture 放在 `fixtures/<scenario>/`，全部由 `tools/make-fixtures.ts` 產�
 | --- | --- |
 | `events_total` | 進入排程的事件總數 |
 | `utterances_played` | 實際播出的回覆數 |
-| `coverage_rate` | 播出數 / 可回答事件數 |
+| `qualified_events` | 通過本機粗篩的唯一合格事件數（去重鍵為 source+messageId），即覆蓋率分母 |
+| `covered_events` | 至少被一段已播放回覆涵蓋的唯一合格事件數 |
+| `coverage_rate` | `covered_events / qualified_events`。一段回覆同時回應多則留言時，那幾則都算被涵蓋，但回覆本身只算一次。此值不可能超過 100% |
+| `game_comment_count` | 遊戲評論另行計數，不併入上面的覆蓋率 |
 | `dropped_by_reason` | 依 `expired`、`rate_capped`、`length`、`duplicate`、`cancelled` 等分類 |
 | `latency_ms` | 分段時間的中位數與 p95 |
 | `duplicate_playbacks` | 同一 messageId 重播次數，必須為 0 |
 | `overlap_count` | 播放重疊次數，必須為 0 |
 
 覆蓋率必須與延遲一起看。靠大量丟棄事件把延遲壓低不算通過。
+
+覆蓋率不得以「utterance 總數 ÷ 留言總數」計算（R1 F3）。那個算法在一段回覆涵蓋多則留言時會超過 100%，也會讓重複回應同一則留言被重複計分。分母固定是唯一合格事件數，遊戲評論另計。
 
 ### 3.1 延遲分段
 
