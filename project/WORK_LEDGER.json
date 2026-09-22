@@ -2,13 +2,13 @@
   "schema_version": 1,
   "repository": "firekou/Auto_Reply_Bot",
   "updated_at": "2026-09-22",
-  "state": "ARB-001_APPROVED_WITH_CONDITIONS",
+  "state": "ARB-002_READY_FOR_GPT_REVIEW",
   "automation": "NOT_ENABLED",
   "authority": {
     "entry": "README.md",
     "plan": "docs/PROJECT_PLAN.md",
     "review_policy": "AGENTS.md",
-    "authorized_now": "ARB-001 review recorded; next scoped mock checkpoint and required corrections are specified in linked ARB-002 prompt; no paid calls or live broadcast."
+    "authorized_now": "ARB-002 delivered R1 corrections plus a mock-only minimal loop for review; no paid calls, no credentials, no real capture or audio, no live broadcast."
   },
   "queue": [
     {
@@ -70,24 +70,108 @@
     {
       "work_id": "ARB-002",
       "role": "Claude executor implementer",
-      "base_sha": null,
+      "base_sha": "7a791e28ace60610acaf61e15b3a8e46588e19ec",
       "content_head": null,
       "reviewed_head": null,
       "reviewer_only_head": null,
       "scope": "Small mock end-to-end checkpoint plus R1 F1-F5 corrections; staged P1 completion",
-      "state": "READY_WITH_REVIEW_CONDITIONS",
+      "state": "READY_FOR_GPT_REVIEW",
+      "changed_paths": [
+        "docs/IMPLEMENTATION_DESIGN.md",
+        "docs/IMPLEMENTATION_BACKLOG.md",
+        "docs/POC_RUNBOOK.md",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "src/",
+        "tests/",
+        "tools/make-fixtures.ts",
+        "fixtures/scenario-a/",
+        "reports/ARB-002_EXECUTOR_REPORT.md",
+        "project/WORK_LEDGER.json",
+        "README.md"
+      ],
+      "commands_and_exit_codes": [
+        {
+          "command": "npm ci",
+          "exit_code": 0
+        },
+        {
+          "command": "npm run build",
+          "exit_code": 0
+        },
+        {
+          "command": "npm test",
+          "exit_code": 0,
+          "result": "48 tests, 48 pass, 0 fail, 0 skipped"
+        },
+        {
+          "command": "node dist/src/cli/index.js replay --minutes 30 --out runtime/logs/scenario-a.jsonl",
+          "exit_code": 0
+        },
+        {
+          "command": "node dist/src/cli/index.js replay --minutes 30 --inject-estop 10 --out runtime/logs/scenario-a-estop.jsonl",
+          "exit_code": 0
+        },
+        {
+          "command": "node dist/src/cli/index.js make-fixtures --minutes 30",
+          "exit_code": 0
+        },
+        {
+          "command": "node dist/src/cli/index.js doctor",
+          "exit_code": 0
+        }
+      ],
+      "decision": null,
+      "blocking_findings": [],
+      "next_checkpoint": "GPT independent review of the R1 corrections and the C1 minimal loop; PR #1 stays draft",
+      "invalidates_when": "Scope expands to paid services, real capture, real audio or live broadcast; or content head changes",
+      "prompt": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md",
+      "review_head": "6079e14b35a162ae70d09ea7a84b4930d84eb68f",
+      "design_fix_commit": "81296793ecf7aeb98347e75c0e7730eb3d1f1110",
+      "implementation_commit": "7647009701a3107db9ea63fb0afaf39ec359f4f2",
+      "content_head_instruction": "Filled by the follow-up evidence commit; the content commit does not reference its own SHA.",
+      "branch": "claude/hopeful-archimedes-bf57bo",
+      "report": "reports/ARB-002_EXECUTOR_REPORT.md",
+      "pull_request": "https://github.com/firekou/Auto_Reply_Bot/pull/1",
+      "review_conditions_closed": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6 (P1 half: control channel, browser profile, device_id semantics)"
+      ],
+      "review_conditions_open": [
+        "F6 (P2 half: device enumeration, real playback and force stop, OBS capture of the player)"
+      ],
+      "checkpoint": "C1 delivered; C2 replay scale delivered at 30 scene minutes; C3 remaining failure cases still open"
+    },
+    {
+      "work_id": "ARB-003",
+      "role": "TBD by reviewer",
+      "base_sha": null,
+      "content_head": null,
+      "reviewed_head": null,
+      "reviewer_only_head": null,
+      "scope": "Either C3 remaining P1 failure cases, or P2 start with one capture, one chat source, one model, one TTS and one player",
+      "state": "BLOCKED_ON_ARB-002_REVIEW",
       "changed_paths": [],
       "commands_and_exit_codes": [],
       "decision": null,
-      "blocking_findings": [
-        "R1 conditions required before accepting implementation"
-      ],
-      "next_checkpoint": "Runnable mock loop, targeted tests and truthful replay report",
-      "invalidates_when": "Scope expands to paid services or live runtime, or new substantive content changes review assumptions",
-      "prompt": "https://github.com/firekou/Auto_Reply_Bot/blob/6079e14b35a162ae70d09ea7a84b4930d84eb68f/prompts/CLAUDE_ARB002_IMPLEMENTATION_PROMPT.md"
+      "blocking_findings": [],
+      "next_checkpoint": "Do not start before the ARB-002 review decision is recorded",
+      "invalidates_when": "ARB-002 review returns NEEDS_INFORMATION or BLOCKED",
+      "prerequisites_for_p2": [
+        "Host OS and version",
+        "Game page URL and rendering type",
+        "Chat source and permitted interface",
+        "Authorized TTS service",
+        "Authorized hourly and session USD limits"
+      ]
     }
   ],
-  "next_role": "Claude executor implementer",
+  "next_role": "GPT reviewer",
   "runtime_validation": {
     "capture": "NOT_TESTED",
     "chat": "NOT_TESTED",
@@ -104,8 +188,10 @@
     "P4 two-hour stability"
   ],
   "notes": [
-    "PR #1 remains draft; implementation design remains on its branch.",
-    "R1 reviewer artifacts at 6079e14b35a162ae70d09ea7a84b4930d84eb68f. Follow linked prompt for next checkpoint.",
+    "ARB-002 closed review R1 findings F1-F5 and the P1 half of F6 in a separate commit from the implementation.",
+    "The runtime is mock only: no browser, no audio device, no paid provider, no recording, no broadcast.",
+    "A 30 scene-minute replay takes about 8.5 s of wall time on a virtual clock. That is not a real-time stability run.",
+    "Mock scripted JSON proves tool absence and input isolation only, never real model injection resistance.",
     "All real runtime evidence remains NOT_TESTED; automation remains NOT_ENABLED."
   ]
 }
